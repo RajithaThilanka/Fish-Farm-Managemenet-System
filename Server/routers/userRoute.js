@@ -1,19 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
-//get users
-router.get('/', (req,res) => {
-    res.send({ 'msg': 'thi is users get details'});
-});
-
-//user post request
-router.post('/postdata', (req,res) => {  
-    //res.send({ 'msg': 'this is post request' });
-    res.send(req.body.name);
-});
+const userController=require("../Controllers/userControllers")
 
 
+router.get('/getUser', userController.getUser);
 
+router.post('/postUser', userController.postUser);
 
+router.get('/postData', userController.getData);
+
+router.get('/getMe', userController.getMe);
 
 module.exports = router;

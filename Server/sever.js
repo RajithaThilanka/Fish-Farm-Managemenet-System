@@ -11,17 +11,17 @@ app.use(morgan('tiny'));
 
 //import requests file
 const user = require('./routers/userRoute');
-
+const home = require('./routers/Home');
 
 //use middleware to get json object
 //it is using to responce bodu make json type
 app.use(express.json());
 
-
 //re route all api/users route to users 
 //adn check log middleware
 //app.use('/api/users', log, user);
 app.use('/api/users', user);
+app.use('/api/me',home);
  
 //log middleware function
 //log mean middlewate
