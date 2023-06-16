@@ -26,6 +26,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique:true
   },
+  profilePhoto: {
+    type: String,
+    required:true
+  },
+  position: {
+    type: String,
+    required:true
+  },
+  ExpireDate: {
+    type: Date,
+    required:true
+  },
 },
 {
    timestamps:true

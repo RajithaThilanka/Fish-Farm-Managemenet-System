@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
+const cors = require('cors');
 
 dotenv.config({ path: './config.env' });
 
@@ -27,11 +27,14 @@ mongoose
 
 const port = process.env.PORT;
 
+app.use(cors());
+
 //use morgon middleware
 app.use(morgan('tiny'));
 
 //import requests file
 const user = require('./routers/userRoute');
+const farm   = require('./routers/farmRoute');
 
 
 //use middleware to get json object
@@ -39,9 +42,9 @@ const user = require('./routers/userRoute');
 app.use(express.json());
 
 //re route all api/users route to users 
-//adn check log middleware
-app.use('/api/users', user);
-
+//adn check log middlewaren
+app.use('/api/v1/users', user);
+app.use('/api/v1/farms', farm);
 
 const server = app.listen(port, () => {
   console.log('Listening to port ' + port);
